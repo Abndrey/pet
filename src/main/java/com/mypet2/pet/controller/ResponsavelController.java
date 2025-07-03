@@ -1,6 +1,7 @@
 package com.mypet2.pet.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,7 +23,8 @@ public class ResponsavelController {
 
     }
     @GetMapping (value ="/insert")
-    public String insert(ResponsavelDto responsavelDto) {
+    public String insert(@RequestBody ResponsavelDto responsavelDto) {
+        
         Responsavel responsavel = responsavelDto.novoResponsavel();
         System.out.println(responsavel.toString());
 
