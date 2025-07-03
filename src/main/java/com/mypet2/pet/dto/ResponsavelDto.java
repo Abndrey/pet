@@ -1,5 +1,7 @@
 package com.mypet2.pet.dto;
 
+import com.mypet2.pet.modelo.Responsavel;
+
 public class ResponsavelDto {
     private String nome;
     private String email;
@@ -47,6 +49,11 @@ public class ResponsavelDto {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    
+    }
+
+    public Responsavel novoResponsavel() {
+        return new Responsavel(0, nome, email, telefone, cpf);
     }
 
 }

@@ -1,7 +1,11 @@
 package com.mypet2.pet.modelo;
 
-public class Responsavel {
+import jakarta.persistence.Id;
 
+public class Responsavel {
+    
+    @Id
+    private Long id;
     private String nome;
     private String email;
     private String telefone;
@@ -11,7 +15,8 @@ public class Responsavel {
     public Responsavel() {
     }
 
-    public Responsavel(String nome, String email, String telefone, String cpf) {
+    public Responsavel(long id,String nome, String email, String telefone, String cpf) {
+        this.id = id;
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
@@ -50,7 +55,7 @@ public class Responsavel {
         this.cpf = cpf;
     }
 
-    @Override
+    @Override //sobrescrito
     public String toString() {
         return "Responsavel [nome=" + nome + ", email=" + email + ", telefone=" + telefone + ", cpf=" + cpf + "]";
     }
