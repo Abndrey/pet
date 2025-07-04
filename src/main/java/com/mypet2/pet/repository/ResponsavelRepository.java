@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.mypet2.pet.modelo.Responsavel;
 
-public interface ReponsavelRepository extends JpaRepository<Responsavel, Long> {
+public interface ResponsavelRepository extends JpaRepository<Responsavel, Long> {
     
 }
