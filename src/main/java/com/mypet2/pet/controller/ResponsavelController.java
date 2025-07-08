@@ -2,12 +2,15 @@ package com.mypet2.pet.controller;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.jersey.JerseyProperties.Servlet;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,9 +41,37 @@ public class ResponsavelController {
     }
 
     @GetMapping(value = "/listaresponsavel")
-    public List <Responsavel> findeAll() {
+    public List <Responsavel> findeAll() {// Esse método retorna os valores do banco de dados
         return responsavelRepository.findAll();
     }
+
+
+
+
+@DeleteMapping(value = "/{id}")
+public ResponseEntity<Void> deletaresponsavel (@PathVariable Long id) {
+     responsavelRepository.deleteById(id);
+
+    return ResponseEntity.noContent().build();
+
+
+}   
+
+
+// @GetMapping( value = "/responsavel/{id}")
+// public Responsavel SelecionarId(@PathVariable Long id) {
+//     return responsavelRepository.findById(id).orElse(null);
+// }
+
+
+@GetMapping(value = "/{id}")
+public ResponseEntity <Responsavel> buscarResponsavel(@PathVariable Long id) {
+   Optional <Responsavel> responsavelBanco = responsavelRepository.findById(id);
+
+
+   return ResponseEntity.ok(responsavelBanco.get());
+   
+}
 
 
     @PostMapping(value = "/insert")
