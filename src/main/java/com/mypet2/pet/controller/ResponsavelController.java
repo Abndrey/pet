@@ -1,6 +1,7 @@
 package com.mypet2.pet.controller;
 
 import java.net.URI;
+import java.util.List;
 
 import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,12 @@ public class ResponsavelController {
         return "<h1>Ythalo<h1>"; // return -> Devolve o retorno para quem chamou
 
     }
+
+    @GetMapping(value = "/listaresponsavel")
+    public List <Responsavel> findeAll() {
+        return responsavelRepository.findAll();
+    }
+
 
     @PostMapping(value = "/insert")
     public ResponseEntity<?> insert(@RequestBody ResponsavelDto responsavelDto) {
